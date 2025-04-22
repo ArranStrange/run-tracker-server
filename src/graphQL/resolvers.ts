@@ -3,6 +3,10 @@ import Run from "../models/Run";
 const resolvers = {
   Query: {
     runs: async () => Run.find(),
+    run: async (_: any, { id }: { id: string }) => {
+      console.log("Fetching run with ID:", id);
+      return await Run.findById(id);
+    },
   },
   Mutation: {
     startRun: async () => {

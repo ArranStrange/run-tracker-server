@@ -12,9 +12,11 @@ const typeDefs = gql`
 
   type Query {
     runs: [Run]
+    run(id: ID!): Run
   }
 
   type Mutation {
+    startRun: Run
     stopRun(
       runId: ID!
       name: String!
