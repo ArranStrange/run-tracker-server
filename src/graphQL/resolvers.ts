@@ -16,12 +16,18 @@ const resolvers = {
       });
       return await run.save();
     },
-    stopRun: async (_: any, { runId, endTime, distance, coordinates }: any) => {
+    stopRun: async (
+      _: any,
+      { runId, name, endTime, totalTime, distance, coordinates }: any
+    ) => {
       return await Run.findByIdAndUpdate(
         runId,
-        { endTime, distance, coordinates },
+        { name, endTime, totalTime, distance, coordinates },
         { new: true }
       );
+    },
+    deleteRun: async (_: any, { id }: { id: string }) => {
+      return await Run.findByIdAndDelete(id);
     },
   },
 };

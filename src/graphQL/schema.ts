@@ -6,6 +6,7 @@ const typeDefs = gql`
     startTime: String!
     name: String
     endTime: String
+    totalTime: Int
     distance: Float
     coordinates: [[Float]]
   }
@@ -21,9 +22,11 @@ const typeDefs = gql`
       runId: ID!
       name: String!
       endTime: String!
+      totalTime: Int
       distance: Float!
       coordinates: [[Float]]!
     ): Run
+    deleteRun(id: ID!): Run
   }
 `;
 
