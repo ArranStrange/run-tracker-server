@@ -1,5 +1,6 @@
 import express from "express";
 import { ApolloServer } from "apollo-server-express";
+import { InMemoryLRUCache } from "apollo-server-caching";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -16,6 +17,7 @@ export async function startServer() {
   const server = new ApolloServer({
     typeDefs,
     resolvers,
+    cache: new InMemoryLRUCache(),
   });
 
   await server.start();
@@ -36,3 +38,5 @@ export async function startServer() {
     console.error("DB connection failed", err);
   }
 }
+
+startServer();

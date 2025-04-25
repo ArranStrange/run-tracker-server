@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --watch src --ext ts --exec ts-node src/index.ts",
     "build": "tsc",
     "start": "node dist/index.js"
   },
@@ -11,16 +10,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "apollo-server-caching": "^3.3.0",
     "apollo-server-express": "^3.13.0",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^4.21.2",
     "graphql": "^16.10.0",
-    "mongoose": "^8.13.2",
-    "typescript": "^5.8.3"
+    "mongoose": "^8.13.2"
   },
   "description": "",
   "devDependencies": {
-    "ts-node": "^10.9.2"
+    "@types/node": "^22.15.2",
+    "typescript": "^5.8.3"
   }
 }
