@@ -13,6 +13,7 @@ const resolvers = {
       const run = new Run({
         startTime: new Date().toISOString(),
         coordinates: [],
+        totalTime: 0,
       });
       return await run.save();
     },
