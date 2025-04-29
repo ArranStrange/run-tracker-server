@@ -2,6 +2,18 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const apollo_server_express_1 = require("apollo-server-express");
 const typeDefs = (0, apollo_server_express_1.gql) `
+  input CoordinateInput {
+    lat: Float!
+    lng: Float!
+    secondsFromStart: Int!
+  }
+
+  type Coordinate {
+    lat: Float!
+    lng: Float!
+    secondsFromStart: Int!
+  }
+
   type Run {
     id: ID!
     startTime: String!
@@ -9,7 +21,7 @@ const typeDefs = (0, apollo_server_express_1.gql) `
     endTime: String
     totalTime: Int
     distance: Float
-    coordinates: [[Float]]
+    coordinates: [Coordinate!]!
   }
 
   type Query {
@@ -25,7 +37,7 @@ const typeDefs = (0, apollo_server_express_1.gql) `
       endTime: String!
       totalTime: Int
       distance: Float!
-      coordinates: [[Float]]!
+      coordinates: [CoordinateInput!]!
     ): Run
     deleteRun(id: ID!): Run
   }

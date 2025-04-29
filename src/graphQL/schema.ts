@@ -1,6 +1,18 @@
 import { gql } from "apollo-server-express";
 
 const typeDefs = gql`
+  input CoordinateInput {
+    lat: Float!
+    lng: Float!
+    secondsFromStart: Int!
+  }
+
+  type Coordinate {
+    lat: Float!
+    lng: Float!
+    secondsFromStart: Int!
+  }
+
   type Run {
     id: ID!
     startTime: String!
@@ -8,7 +20,7 @@ const typeDefs = gql`
     endTime: String
     totalTime: Int
     distance: Float
-    coordinates: [[Float]]
+    coordinates: [Coordinate!]!
   }
 
   type Query {
@@ -24,7 +36,7 @@ const typeDefs = gql`
       endTime: String!
       totalTime: Int
       distance: Float!
-      coordinates: [[Float]]!
+      coordinates: [CoordinateInput!]!
     ): Run
     deleteRun(id: ID!): Run
   }
