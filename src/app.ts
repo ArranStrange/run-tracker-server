@@ -8,17 +8,23 @@ import resolvers from "./graphQL/resolvers";
 
 const corsOptions = {
   origin: [
-    "http://localhost:5173/",
-    "https://run-tracker-server.onrender.com",
-    "http://run-tracker-frontend.s3-website.eu-north-1.amazonaws.com/history",
+    "http://localhost:5173",
     "http://192.168.0.4:5173",
+    "https://run-tracker-server.onrender.com",
+    "https://run-tracker-server.onrender.com/graphql",
+    "http://run-tracker-frontend.s3-website.eu-north-1.amazonaws.com",
+    "https://run-tracker-frontend.s3.eu-north-1.amazonaws.com",
   ],
+
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
 };
 
 const app = express();
+
 app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
+app.use(express.json());
 
 export async function startServer() {
   const server = new ApolloServer({
