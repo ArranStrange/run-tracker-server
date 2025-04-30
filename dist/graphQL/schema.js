@@ -39,6 +39,7 @@ const typeDefs = (0, apollo_server_express_1.gql) `
       distance: Float!
       coordinates: [CoordinateInput!]!
     ): Run
+    updateRunName(id: ID!, name: String!): Run
     deleteRun(id: ID!): Run
   }
 `;

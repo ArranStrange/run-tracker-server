@@ -21,13 +21,10 @@ const resolvers = {
             });
             return await run.save();
         },
-        stopRun: async (_, { runId, name, endTime, distance, coordinates }) => {
+        stopRun: async (_, { runId, name, endTime, totalTime, distance, coordinates }) => {
             const run = await Run_1.default.findById(runId);
             if (!run)
                 throw new Error("Run not found");
-            const startTime = new Date(run.startTime).getTime();
-            const end = new Date(endTime).getTime();
-            const totalTime = Math.floor((end - startTime) / 1000);
             return await Run_1.default.findByIdAndUpdate(runId, {
                 name,
                 endTime,
@@ -35,6 +32,12 @@ const resolvers = {
                 distance,
                 coordinates,
             }, { new: true });
+        },
+        updateRunName: async (_, { id, name }) => {
+            const run = await Run_1.default.findByIdAndUpdate(id, { name }, { new: true });
+            if (!run)
+                throw new Error("Run not found");
+            return run;
         },
         deleteRun: async (_, { id }) => {
             return await Run_1.default.findByIdAndDelete(id);

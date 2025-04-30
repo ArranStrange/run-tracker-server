@@ -38,6 +38,7 @@ const typeDefs = gql`
       distance: Float!
       coordinates: [CoordinateInput!]!
     ): Run
+    updateRunName(id: ID!, name: String!): Run
     deleteRun(id: ID!): Run
   }
 `;
