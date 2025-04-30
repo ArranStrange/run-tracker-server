@@ -14,6 +14,7 @@ const corsOptions = {
     "https://run-tracker-server.onrender.com/graphql",
     "http://run-tracker-frontend.s3-website.eu-north-1.amazonaws.com",
     "https://run-tracker-frontend.s3.eu-north-1.amazonaws.com",
+    "https://do6kctxdsrc6z.cloudfront.net/",
   ],
 
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
