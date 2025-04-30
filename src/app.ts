@@ -19,8 +19,6 @@ export async function startServer() {
   await server.start();
   server.applyMiddleware({ app });
 
-  const PORT = process.env.PORT || 4000;
-
   try {
     await mongoose.connect(process.env.MONGO_URI!);
     console.log("✅ Connected to MongoDB");
@@ -28,6 +26,8 @@ export async function startServer() {
     app.get("/", (req, res) => {
       res.send("🚀 Server is running");
     });
+
+    const PORT = process.env.PORT || 4000;
 
     app.listen(PORT, () => {
       console.log(`🚀 Server listening on port ${PORT}`);
