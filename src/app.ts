@@ -26,14 +26,16 @@ export async function startServer() {
 
   try {
     await mongoose.connect(process.env.MONGO_URI!);
-    console.log("Connected to MongoDB");
+    console.log("✅ Connected to MongoDB");
 
     app.listen(PORT, () => {
       console.log(
-        `Server ready at http://localhost:${PORT}${server.graphqlPath}`
+        `🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`
       );
     });
   } catch (err) {
-    console.error("Database connection failed", err);
+    console.error("❌ Database connection failed", err);
   }
 }
+
+startServer();

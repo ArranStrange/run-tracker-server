@@ -1,2 +1,2 @@
-import { startServer } from "./app";
-startServer();
+// import { startServer } from "./app";
+// startServer();
