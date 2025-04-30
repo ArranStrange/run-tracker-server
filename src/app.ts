@@ -25,6 +25,8 @@ export async function startServer() {
     res.send("🚀 Server is running");
   });
 
+  console.log("📡 About to bind to port:", PORT);
+
   app.listen(PORT, () => {
     console.log(`🚀 Server listening on port ${PORT}`);
   });
