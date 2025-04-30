@@ -37,5 +37,5 @@ export async function startServer() {
     console.error("❌ Database connection failed", err);
   }
 }
-
+console.log("✅ Server entry file is executing");
 startServer();
