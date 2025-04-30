@@ -2,12 +2,12 @@ import express from "express";
 import { ApolloServer } from "apollo-server-express";
 import mongoose from "mongoose";
 import cors from "cors";
-import dotenv from "dotenv";
+// import dotenv from "dotenv";
 
 import typeDefs from "./graphQL/schema";
 import resolvers from "./graphQL/resolvers";
 
-dotenv.config();
+// dotenv.config();
 
 const app = express();
 app.use(cors());
@@ -16,6 +16,7 @@ export async function startServer() {
   const server = new ApolloServer({
     typeDefs,
     resolvers,
+    cache: "bounded",
   });
 
   await server.start();
@@ -33,6 +34,6 @@ export async function startServer() {
       );
     });
   } catch (err) {
-    console.error("DB connection failed", err);
+    console.error("Database connection failed", err);
   }
 }
