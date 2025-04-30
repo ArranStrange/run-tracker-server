@@ -60,4 +60,3 @@ console.log("👋 About to call startServer");
 startServer().catch((err) => {
   console.error("❌ Failed to start server:", err);
 });
-console.log("✅ startServer has been called");
